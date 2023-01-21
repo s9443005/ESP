@@ -1,16 +1,17 @@
 # 物聯網專題應用
+
 ESP開發板WEB程式設計
 ## 模組一
-  >9小時
-* LESSON_01 認識開發板
-  > ESP8266 D1 mini 是一塊廠商已經整合好的ESP8266開發板。
-* LESSON_02 內建LED BLINK
+課程時間：9小時
+### LESSON_01 認識開發板
+ESP8266 D1 mini 是一塊廠商已經整合好的ESP8266開發板。
+### LESSON_02 內建LED BLINK
   > 範例影片
   > 範例說明，[按我](https://electrosome.com/esp8266-arduino-programming-led-blink/)
-* LESSON_03 自建LED
-* LESSON_04 課堂作業--LED燈光秀
-* LESSON_05 蜂鳴器-有源及無源
-* LESSON_06 驗收作業--聲光秀
+### LESSON_03 自建LED
+### LESSON_04 課堂作業--LED燈光秀
+### LESSON_05 蜂鳴器-有源及無源
+### LESSON_06 驗收作業--聲光秀
 ## 模組二
   >15小時
 * LESSON_01 WEB Server控制2顆LED開關
