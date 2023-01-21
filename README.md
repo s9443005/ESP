@@ -13,24 +13,27 @@ ESP8266 D1 mini 是一塊廠商已經整合好的ESP8266開發板。
 ### LESSON_05 蜂鳴器-有源及無源
 ### LESSON_06 驗收作業--聲光秀
 ## 模組二
-  15小時
+課程時間：18小時
 ### LESSON_01 WEB Server控制2顆LED開關
 ### LESSON_02 課堂作業--WEB Server控制3顆LED開關
 ### LESSON_03 WEB Server控制1顆LED亮度-使用RANGE物件
 ### LESSON_04 課堂作業--WEB Server控制2顆LED亮度-使用RANGE物件
 ### LESSON_05 HTTP協定參數傳遞
 ### LESSON_06 儀表板基礎
-### LESSON_06 驗收作業--(A)伺服馬達 OR (B)溫濕度感測器DHT11
+### LESSON_07 驗收作業--(A)伺服馬達 OR (B)溫濕度感測器DHT11
 ## 模組三
+課程時間：12小時
 ### LESSON_01 MySQL及PHP Script基礎
 ### LESSON_02 WEB Server讀取溫濕度寫入MySQL
 ### LESSON_03 驗收作業--讀取溫濕度及氣壓寫入MySQL
 ### LeSson_04 WEB Server讀取
 ## 模組四
+課程時間：12小時
 ### LESSON_01 WEB SOCKET協定
 ### LESSON_02 MQTT協定
 ### LESSON_03 Ad-hoc網路以及 MESH 實作
 ## 感測器模組
+課程時間：3小時
 ### LESSON_01 溫濕度感測器DHT11
 ### LESSON_02 火焰感測器
 ### LESSON_03 伺服馬達
