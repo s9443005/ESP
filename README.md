@@ -45,8 +45,8 @@ ESP8266 D1 mini 是一塊廠商已經整合好的ESP8266開發板。
 ### LESSON_03 伺服馬達
 ## 需要材料
 ### 每位學生
-* ESP8266 (建議 D1 mini) 或 ESP32 (建議 Dev Kit v1)
-* USB 連接線 (TypeA + mini)
+* ESP8266 [建議 D1 mini](https://shop.mirotek.com.tw/shop/200022b/) 或 ESP32 (建議 Dev Kit v1)
+* USB 連接線 (TypeA + mini USB，一般手機充電線即可)
 * 麵包板cX1
 * 杜邦線X若干 (公公 及 公母)
   >以上項目於第五週起由學生自備，以下項目由課程提供
