@@ -48,6 +48,7 @@ ESP8266 D1 mini 是一塊廠商已經整合好的ESP8266開發板。
 * ESP8266 (建議 D1 mini) 或 ESP32 (建議 Dev Kit v1)
 * USB 連接線 (TypeA + mini)
 * 麵包板cX1
+  >以上項目於第五週起由學生自備
 * LED燈X8
 * 有源蜂鳴器X1 及 無源蜂鳴器X1
 * 溫濕度感測器DHT11X1 或 溫濕度壓力感測器BME280X1
