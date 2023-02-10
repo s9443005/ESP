@@ -13,19 +13,21 @@
 #include <ESP8266WiFi.h>
 #include <ESPAsyncTCP.h>
 #include <ESPAsyncWebServer.h>
-#include <ESP8266HTTPClient.h>
-#include <WiFiClient.h>
-String serverName = "http://192.168.1.215/together";
 
 // Replace with your network credentials
 const char* ssid = "JOSEPH";
 const char* password = "0912540452";
-
-const int output = 5;
-
+const int output = D1;
+//const int output = D7;
 String sliderValue = "0";
-
 const char* PARAM_INPUT = "value";
+
+IPAddress local_IP(192,168,1,111);
+//IPAddress local_IP(192,168,1,112);
+IPAddress subnet(255,255,255,0);
+IPAddress gateway(192,168,1,1);
+IPAddress primaryDNS(8,8,8,8);
+IPAddress secondaryDNS(8,8,4,4);
 
 // Create AsyncWebServer object on port 80
 AsyncWebServer server(80);
@@ -48,6 +50,7 @@ const char index_html[] PROGMEM = R"rawliteral(
 </head>
 <body>
   <h2>ESP Web Server</h2>
+  <p>%localIP%</p>
   <p><span id="textSliderValue">%SLIDERVALUE%</span></p>
   <p><input type="range" onchange="updateSliderPWM(this)" id="pwmSlider" min="0" max="255" value="%SLIDERVALUE%" step="1" class="slider"></p>
 <script>
@@ -67,32 +70,32 @@ function updateSliderPWM(element) {
 // Replaces placeholder with button section in your web page
 String processor(const String& var){
   //Serial.println(var);
-  if (var == "SLIDERVALUE"){
-    return sliderValue;
-  }
+  if (var == "SLIDERVALUE"){return sliderValue;}
+  if (var == "localIP"){return WiFi.localIP().toString();}
   return String();
 }
 
 void setup(){
   // Serial port for debugging purposes
   Serial.begin(115200);
-
   analogWrite(output, sliderValue.toInt());
-
-  // Connect to Wi-Fi
   WiFi.begin(ssid, password);
-  while (WiFi.status() != WL_CONNECTED) {
-    delay(1000);
-    Serial.println("Connecting to WiFi..");
+  while (!WiFi.config(local_IP, gateway, subnet, primaryDNS, secondaryDNS)) {
+    Serial.println("STA Failed to configure TCP/IP");
   }
-
-  // Print ESP Local IP Address
+  Serial.println(WiFi.macAddress());
   Serial.println(WiFi.localIP());
-
+  Serial.println(WiFi.subnetMask());
+  Serial.println(WiFi.gatewayIP());
+  Serial.println(WiFi.dnsIP()); 
   // Route for root / web page
   server.on("/", HTTP_GET, [](AsyncWebServerRequest *request){
     request->send_P(200, "text/html", index_html, processor);
   });
+  
+  server.on("/LED", HTTP_GET, [](AsyncWebServerRequest *request){
+    request->send(200, "text/plain", sliderValue);
+  });  
 
   // Send a GET request to <ESP_IP>/slider?value=<inputMessage>
   server.on("/slider", HTTP_GET, [] (AsyncWebServerRequest *request) {
@@ -101,18 +104,13 @@ void setup(){
     if (request->hasParam(PARAM_INPUT)) {
       inputMessage = request->getParam(PARAM_INPUT)->value();
       sliderValue = inputMessage;
-      analogWrite(output, sliderValue.toInt());}
-    else {inputMessage = "No message sent";}
+      analogWrite(output, sliderValue.toInt());
+    }
+    else {
+      inputMessage = "No message sent";
+    }
     Serial.println(inputMessage);
     request->send(200, "text/plain", "OK");
-
-
-
-
-
-
-
-
   });
   
   // Start server
