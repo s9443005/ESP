@@ -33,8 +33,10 @@ const char index_html[] PROGMEM = R"rawliteral(
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="utf-8">
-  <meta http-equiv="refresh" content="3">
+  <meta http-equiv="refresh" content="10">
   <title>ESP Web Server</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
   <style>
     html {font-family: Arial; display: inline-block; text-align: center;}
     h2 {font-size: 1.6rem;}
@@ -57,22 +59,36 @@ const char index_html[] PROGMEM = R"rawliteral(
   </style>
 </head>
 <body>
-  <h2>ESP Web Server Dashboard</h2>
-  <p>192.168.1.115</p>
-  <div class=cellA><p>Server111 LED亮度:%LED1%</p></div>
-  <div class=cellB><p>Server112 LED亮度:%LED2%</p></div>
-  
-  <div class=cellA><div class="meter"><label for="meter"><p>Server111亮度:%LED1%</label></p><p style="font-size: 2.0rem;"><meter value="%LED1%" max="255" low="63"></p></meter></div></div>
-  <div class=cellB><div class="meter"><label for="meter"><p>Server112亮度:%LED2%</label></p><p style="font-size: 2.0rem;"><meter value="%LED2%" max="255" low="63"></p></meter></div></div>
-  
-  <div class=cellA style="display: flex; justify-content: center; padding: 50px;"><p>Server111</p><div class="gauge" style="width: 200px; --rotation:%LED1deg%deg; --color:#3399FF; --background:#e9ecef;">
-        <div class="percentage"></div><div class="mask"></div><span class="value">亮度:%LED1%</span>
-  </div></div>
-
-  <div class=cellB style="display: flex; justify-content: center; padding: 50px;"><p>Server112</p><div class="gauge" style="width: 200px; --rotation:%LED2deg%deg; --color:#3399FF; --background:#e9ecef;">
-         <div class="percentage"></div><div class="mask"></div><span class="value">亮度:%LED2%</span>
-  </div></div>
-
+  <div class="container-fluid p-5 bg-primary text-white text-center">
+    <h2>ESP Web Server Dashboard</h2>
+    <p>192.168.1.115</p>
+  </div>
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class=cellA><p>Server111 LED亮度:%LED1%</p></div>
+      </div>
+      <div class="col-sm-6">
+        <div class=cellB><p>Server112 LED亮度:%LED2%</p></div>
+      </div>
+      <div class="col-sm-6">
+        <div class=cellA><div class="meter"><label for="meter"><p>Server111亮度:%LED1%</label></p><p style="font-size: 2.0rem;"><meter value="%LED1%" max="255" low="63"></p></meter></div></div>
+      </div>
+      <div class="col-sm-6">
+          <div class=cellB><div class="meter"><label for="meter"><p>Server112亮度:%LED2%</label></p><p style="font-size: 2.0rem;"><meter value="%LED2%" max="255" low="63"></p></meter></div></div>
+      </div>
+      <div class="col-sm-6">
+        <div class=cellA style="display: flex; justify-content: center; padding: 50px;"><p>Server111</p><div class="gauge" style="width: 200px; --rotation:%LED1deg%deg; --color:#3399FF; --background:#e9ecef;">
+          <div class="percentage"></div><div class="mask"></div><span class="value">亮度:%LED1%</span>
+        </div></div>
+      </div>
+      <div class="col-sm-6">
+        <div class=cellB style="display: flex; justify-content: center; padding: 50px;"><p>Server112</p><div class="gauge" style="width: 200px; --rotation:%LED2deg%deg; --color:#3399FF; --background:#e9ecef;">
+          <div class="percentage"></div><div class="mask"></div><span class="value">亮度:%LED2%</span>
+        </div></div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
 )rawliteral";
