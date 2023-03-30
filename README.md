@@ -52,6 +52,7 @@ ESP8266 D1 mini 是一塊廠商已經整合好的ESP8266開發板。
 ## MySQL+PHP Author:Dr. JOSEPH CW SHIH
 參考來源：W3SCHOOL TUTORIAL
 ### Connecting to Database -- ex01.php
+程式說明：使用PHP連接MySQL伺服器
 ```
 <?php
 $servername = "localhost";
@@ -76,6 +77,7 @@ $password = "";
   ?>
 ```
 ## Creating a Database -- ex012.php
+程式說明：使用PHP連接在MySQL伺服器建立一個資料庫
 ```
   <?php
   $servername = "localhost";
