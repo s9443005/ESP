@@ -1,4 +1,4 @@
-# 物聯網專題
+# 物聯網專題 Instructor: Dr. JOSEPH CW SHIH
 ## ESP開發板WEB程式設計
 * 本課程為整合性課程，重點在於WEB Server程式設計，有別像是電子系以電子電路及感測器為主的學習內容。
 * 先備條件：具程式設計熱忱，具HTML、CSS、JavaScript最基本基礎、修過網路概論課程佳。
