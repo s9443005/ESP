@@ -77,7 +77,7 @@ $password = "";
   ?>
 ```
 ## Creating a Database -- ex012.php
-程式說明：使用PHP連接在MySQL伺服器建立一個資料庫
+程式說明：使用PHP連接在MySQL伺服器建立一個資料庫叫做mydb
 ```
   <?php
   $servername = "localhost";
@@ -102,8 +102,70 @@ $password = "";
   echo "<p>Connected close資料庫斷線</p>";
   ?>
 ```
-## Connecting to Database -- ex01.php
-## Connecting to Database -- ex01.php
+## Creating a Table -- ex03.php
+程式說明：使用PHP在資料庫mydb建立一張表格叫做myguests
+```
+  <?php
+  $servername = "localhost";
+  $username = "root";
+  $password = "";
+  $dbname = "myDB";
+
+  //這個連線不僅連伺服器，直接叫到資料庫，
+  $conn = new mysqli($servername, $username, $password, $dbname);
+  // Check connection
+  if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+  }
+
+  //使用DDL語言，在mydb資料庫裡建立一張表格叫myguests
+  //DDL是SQL其中一種
+  $sql = "CREATE TABLE MyGuests (
+  id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  firstname VARCHAR(30) NOT NULL,
+  lastname VARCHAR(30) NOT NULL,
+  email VARCHAR(50),
+  reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  )";
+
+  if ($conn->query($sql) === TRUE) {
+    echo "<p>Table MyGuests created successfully表格建立成功<p>";
+  } else {
+    echo "<p>Error creating table: " . $conn->error . "</p>"; 
+  }
+  $conn->close();
+  echo "<p>Connected close資料庫斷線</p>";
+  ?>
+```
+## Insert a Record -- ex04.php
+程式說明：使用PHP在表格myguests裡新增1筆記錄
+```
+  <?php
+  $servername = "localhost";
+  $username = "root";
+  $password = "";
+  $dbname = "myDB";
+
+  // Create connection
+  $conn = new mysqli($servername, $username, $password, $dbname);
+  // Check connection
+  if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+  }
+  //使用DML語言，在表格myguests裡新增新增1筆記錄
+  //DML是SQL其中一種
+  $sql = "INSERT INTO MyGuests (firstname, lastname, email)
+  VALUES ('John', 'Doe', 'john@example.com')";
+
+  if ($conn->query($sql) === TRUE) {
+    echo "<p>New record created successfully新增一筆記錄成功</p>";
+  } else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
+  }
+  $conn->close();
+  echo "<p>Connected close資料庫斷線</p>";
+  ?>
+```
 ## Connecting to Database -- ex01.php
 
 ## 需要材料
