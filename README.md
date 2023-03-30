@@ -49,6 +49,60 @@ ESP8266 D1 mini 是一塊廠商已經整合好的ESP8266開發板。
 ### LESSON2 CSS測量儀Gauge  
 * [YOUTUBE教學影片1](https://www.google.com/search?q=HTML+CSS+gauge+tutorial&sxsrf=AJOqlzWQg46vvdK_PiWPPrHPNM37Wj300g%3A1674545368260&ei=2IjPY5XDD-Dk2roPzI6pgA8&ved=0ahUKEwiVj9fO19_8AhVgslYBHUxHCvAQ4dUDCA8&uact=5&oq=HTML+CSS+gauge+tutorial&gs_lcp=Cgxnd3Mtd2l6LXNlcnAQAzIICCEQoAEQwwQyCAghEKABEMMEOgoIABBHENYEELADOgYIABAHEB46BwgAEA0QgAQ6CAgAEAgQBxAeOgoIABAIEAcQHhAKOgYIABAeEA06CgghEKABEMMEEApKBAhBGABKBAhGGABQmQxYvxZg1BhoAnABeACAAWeIAYADkgEDNS4xmAEAoAEByAEKwAEB&sclient=gws-wiz-serp#fpstate=ive&vld=cid:4e7be008,vid:FnUkVcQ_3CQ)
 * [YOUTUBE教學影片2-推薦](https://www.google.com/search?q=CSS+gauge+tutorial&oq=CSS+gauge+tutorial&aqs=chrome..69i57j69i61j69i60l2.9074j0j15&sourceid=chrome&ie=UTF-8#fpstate=ive&vld=cid:d774bf36,vid:4P1fhmDNHbk)
+## MySQL+PHP
+## Connecting to Database -- ex01.php
+```
+<?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+
+//建立和MySQL DB連線，使用SQLi物件導向
+  <?php
+  $servername = "localhost";
+  $username = "root";
+  $password = "";
+
+  //建立和MySQL DB連線，使用SQLi物件導向
+  $conn = new mysqli($servername, $username, $password);
+  // 檢查連線
+  if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+  }
+  echo "<p>Connected successfully資料庫連線成功</p>";
+  $conn->close();
+  echo "<p>Connected close資料庫斷線</p>";
+  ?>
+```
+## Creating a Database -- ex012.php
+```
+  <?php
+  $servername = "localhost";
+  $username = "root";
+  $password = "";
+
+
+  $conn = new mysqli($servername, $username, $password);
+  // Check connection
+  if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+  }
+
+  // 在MySQL裡新增一個資料庫
+  $sql = "CREATE DATABASE myDB";
+  if ($conn->query($sql) === TRUE) {
+    echo "<p>Table Created successfully資料庫建立成功</p>";
+  } else {
+    echo "<p>Error creating database: " . $conn->error . "<p>";
+  }
+  $conn->close();
+  echo "<p>Connected close資料庫斷線</p>";
+  ?>
+```
+## Connecting to Database -- ex01.php
+## Connecting to Database -- ex01.php
+## Connecting to Database -- ex01.php
+
 ## 需要材料
 ### 每位學生
 * ESP8266 X1 建議 D1 mini [參考圖片](https://shop.mirotek.com.tw/shop/200022b/) 或 ESP32 (建議 Dev Kit v1)
