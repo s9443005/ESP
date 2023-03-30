@@ -76,7 +76,7 @@ $password = "";
   echo "<p>Connected close資料庫斷線</p>";
   ?>
 ```
-## Creating a Database -- ex012.php
+### Creating a Database -- ex02.php
 程式說明：使用PHP連接在MySQL伺服器建立一個資料庫叫做mydb
 ```
   <?php
@@ -102,7 +102,7 @@ $password = "";
   echo "<p>Connected close資料庫斷線</p>";
   ?>
 ```
-## Creating a Table -- ex03.php
+### Creating a Table -- ex03.php
 程式說明：使用PHP在資料庫mydb建立一張表格叫做myguests
 ```
   <?php
@@ -137,7 +137,7 @@ $password = "";
   echo "<p>Connected close資料庫斷線</p>";
   ?>
 ```
-## Insert a Record -- ex04.php
+### Insert a Record/Multiple Records -- ex04.php
 程式說明：使用PHP在表格myguests裡新增1筆記錄
 ```
   <?php
@@ -166,7 +166,8 @@ $password = "";
   echo "<p>Connected close資料庫斷線</p>";
   ?>
 ```
-## Connecting to Database -- ex01.php
+### Insert Multiple Records -- ex05.php
+
 
 ## 需要材料
 ### 每位學生
