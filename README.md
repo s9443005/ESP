@@ -49,8 +49,9 @@ ESP8266 D1 mini 是一塊廠商已經整合好的ESP8266開發板。
 ### LESSON2 CSS測量儀Gauge  
 * [YOUTUBE教學影片1](https://www.google.com/search?q=HTML+CSS+gauge+tutorial&sxsrf=AJOqlzWQg46vvdK_PiWPPrHPNM37Wj300g%3A1674545368260&ei=2IjPY5XDD-Dk2roPzI6pgA8&ved=0ahUKEwiVj9fO19_8AhVgslYBHUxHCvAQ4dUDCA8&uact=5&oq=HTML+CSS+gauge+tutorial&gs_lcp=Cgxnd3Mtd2l6LXNlcnAQAzIICCEQoAEQwwQyCAghEKABEMMEOgoIABBHENYEELADOgYIABAHEB46BwgAEA0QgAQ6CAgAEAgQBxAeOgoIABAIEAcQHhAKOgYIABAeEA06CgghEKABEMMEEApKBAhBGABKBAhGGABQmQxYvxZg1BhoAnABeACAAWeIAYADkgEDNS4xmAEAoAEByAEKwAEB&sclient=gws-wiz-serp#fpstate=ive&vld=cid:4e7be008,vid:FnUkVcQ_3CQ)
 * [YOUTUBE教學影片2-推薦](https://www.google.com/search?q=CSS+gauge+tutorial&oq=CSS+gauge+tutorial&aqs=chrome..69i57j69i61j69i60l2.9074j0j15&sourceid=chrome&ie=UTF-8#fpstate=ive&vld=cid:d774bf36,vid:4P1fhmDNHbk)
-## MySQL+PHP
-## Connecting to Database -- ex01.php
+## MySQL+PHP Author:Dr. JOSEPH CW SHIH
+參考來源：W3SCHOOL TUTORIAL
+### Connecting to Database -- ex01.php
 ```
 <?php
 $servername = "localhost";
