@@ -44,6 +44,16 @@ ESP8266 D1 mini 是一塊廠商已經整合好的ESP8266開發板。
               digitalWrite(output5, LOW);
             }
 ```
+* 解析 HTML 及其相關
+```
+            client.println("<p>GPIO 5 - State " + output5State + "</p>");
+            // If the output5State is off, it displays the ON button       
+            if (output5State=="off") {
+              client.println("<p><a href=\"/5/on\"><button class=\"button\">ON</button></a></p>");
+            } else {
+              client.println("<p><a href=\"/5/off\"><button class=\"button button2\">OFF</button></a></p>");
+            }
+```
 
 ### LESSON_02 課堂作業--WEB Server控制3顆LED開關
 ### LESSON_03 WEB Server控制1顆LED亮度-使用RANGE物件
