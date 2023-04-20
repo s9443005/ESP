@@ -32,6 +32,19 @@ ESP8266 D1 mini 是一塊廠商已經整合好的ESP8266開發板。
   Serial.println(WiFi.gatewayIP());
   Serial.println(WiFi.dnsIP());
 ```
+* 解析 *http://192.168.50.115/5/on* 及相關
+```
+            if (header.indexOf("GET /5/on") >= 0) {
+              Serial.println("GPIO 5 on");
+              output5State = "on";
+              digitalWrite(output5, HIGH);
+            } else if (header.indexOf("GET /5/off") >= 0) {
+              Serial.println("GPIO 5 off");
+              output5State = "off";
+              digitalWrite(output5, LOW);
+            }
+```
+
 ### LESSON_02 課堂作業--WEB Server控制3顆LED開關
 ### LESSON_03 WEB Server控制1顆LED亮度-使用RANGE物件
 ### LESSON_04 課堂作業--WEB Server控制2顆LED亮度-使用RANGE物件
