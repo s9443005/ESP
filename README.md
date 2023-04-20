@@ -61,7 +61,7 @@ ESP8266 D1 mini 是一塊廠商已經整合好的ESP8266開發板。
 ### LESSON_05 HTTP協定參數傳遞
 * 直接在瀏覽器讀取 PWM WEB SLIDER 的燈泡亮度
 * http://192.168.50.115/ask/
-* 是 --request->send()--，不是 request->send_p()
+* 是 __request->send()__，不是 request->send_p()
 ```
   server.on("/ask", HTTP_GET, [](AsyncWebServerRequest *request){
     request->send(200, "text/plain", sliderValue);
