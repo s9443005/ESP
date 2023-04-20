@@ -67,6 +67,7 @@ ESP8266 D1 mini 是一塊廠商已經整合好的ESP8266開發板。
     request->send(200, "text/plain", sliderValue);
   });
 ```
+
 ### LESSON_06 儀表板基礎
 * ESP Integrated Dashboard Server
 ```
@@ -84,10 +85,11 @@ ESP8266 D1 mini 是一塊廠商已經整合好的ESP8266開發板。
   const char* password = "0912540452";
   unsigned long LED1_lastTime = 0;
   unsigned long timerDelay = 1000;
+  // PWM Slider Server增加一個route /ask
   String LED1_serverName = "http://192.168.50.115/ask";
   String _LED1;
 
-  IPAddress local_IP(192, 168, 50, 250);
+  IPAddress local_IP(192, 168, 50, 250); 
   IPAddress gateway(192, 168, 50, 1);
   IPAddress subnet(255, 255, 255, 0);
   IPAddress primaryDNS(8, 8, 8, 8);   //optional
@@ -142,7 +144,7 @@ ESP8266 D1 mini 是一塊廠商已經整合好的ESP8266開發板。
     server.begin();
   }
 
-  void loop() {
+  void loop() { 
       if ((millis() - LED1_lastTime) > timerDelay) {
       if(WiFi.status()== WL_CONNECTED){
         WiFiClient client;
@@ -169,6 +171,12 @@ ESP8266 D1 mini 是一塊廠商已經整合好的ESP8266開發板。
     }
   }
 ```
+以上程式應學習的重點有：
+1. 本機自訂IP環境
+2. 使用bootstrap5- Card
+3. %LED1% 為 placehold，由 processor() 填入亮度字串
+4. 每1秒更新頁面1次
+5. 每隔 timerDelay 秒(1秒) 去讀取 LED 亮度
 
 
 
