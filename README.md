@@ -59,14 +59,24 @@ ESP8266 D1 mini 是一塊廠商已經整合好的ESP8266開發板。
 ### LESSON_03 WEB Server控制1顆LED亮度-使用RANGE物件
 ### LESSON_04 課堂作業--WEB Server控制2顆LED亮度-使用RANGE物件
 ### LESSON_05 HTTP協定參數傳遞
+* 直接在瀏覽器讀取 PWM WEB SLIDER 的燈泡亮度
+* http://192.168.50.115/ask/
+* 是 --request->send()--，不是 request->send_p()
+```
+  server.on("/ask", HTTP_GET, [](AsyncWebServerRequest *request){
+    request->send(200, "text/plain", sliderValue);
+  });
+```
 ### LESSON_06 儀表板基礎
 ### LESSON_07 驗收作業--(A)伺服馬達 OR (B)溫濕度感測器DHT11
+
 ## 模組三
 課程時間：12小時
 ### LESSON_01 MySQL及PHP Script基礎
 ### LESSON_02 WEB Server讀取溫濕度寫入MySQL
 ### LESSON_03 驗收作業--讀取溫濕度及氣壓寫入MySQL
 ### LeSson_04 WEB Server讀取
+
 ## 模組四
 課程時間：12小時
 ### LESSON_01 WEB SOCKET協定
