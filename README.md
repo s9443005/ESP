@@ -68,6 +68,110 @@ ESP8266 D1 mini 是一塊廠商已經整合好的ESP8266開發板。
   });
 ```
 ### LESSON_06 儀表板基礎
+* ESP Integrated Dashboard Server
+```
+  /*********
+    Adapted from Rui Santos, Complete project details at https://RandomNerdTutorials.com/esp8266-nodemcu-web-server-slider-pwm/
+    結合了2支範例程式
+  *********/
+  #include <ESP8266WiFi.h>
+  #include <ESPAsyncTCP.h>
+  #include <ESPAsyncWebServer.h>
+  #include <ESP8266HTTPClient.h>
+  #include <WiFiClient.h>
+
+  const char* ssid = "F6314";
+  const char* password = "0912540452";
+  unsigned long LED1_lastTime = 0;
+  unsigned long timerDelay = 1000;
+  String LED1_serverName = "http://192.168.50.115/ask";
+  String _LED1;
+
+  IPAddress local_IP(192, 168, 50, 250);
+  IPAddress gateway(192, 168, 50, 1);
+  IPAddress subnet(255, 255, 255, 0);
+  IPAddress primaryDNS(8, 8, 8, 8);   //optional
+  IPAddress secondaryDNS(8, 8, 4, 4); //optional
+
+  AsyncWebServer server(80);
+
+  const char index_html[] PROGMEM = R"rawliteral(
+  <!DOCTYPE HTML><html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta http-equiv="refresh" content="1">
+    <title>ESP Web Dashboard Server</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+  </head>
+  <body>
+    <h1 style='text-align: center'>ESP Web Server Dashboard</h1><hr>
+    <div class="container">
+      <div class="row">
+        <div class="card shadow p-3 m-3" style='width: 18rem;'>
+          <div class="card-body">
+            <h5 class="card-title">192.168.50.115</h5>
+            <p class="card-text">LED亮度%LED1%</p>
+            <a href="#" class="btn btn-primary">立即更新</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  </html>
+  )rawliteral";
+
+  String processor(const String& var){
+    //Serial.println(var);
+    if (var == "LED1"){return _LED1;}
+    return String();
+  }
+
+  void setup(){
+    Serial.begin(115200);
+    WiFi.begin(ssid, password);
+    while (!WiFi.config(local_IP, gateway, subnet, primaryDNS, secondaryDNS)) {Serial.println("STA Failed to configure TCP/IP.");}
+    Serial.println(WiFi.macAddress());
+    Serial.println(WiFi.localIP());
+    Serial.println(WiFi.subnetMask());
+    Serial.println(WiFi.gatewayIP());
+    Serial.println(WiFi.dnsIP());
+
+    server.on("/", HTTP_GET, [](AsyncWebServerRequest *request){request->send_P(200, "text/html", index_html, processor);});
+    server.begin();
+  }
+
+  void loop() {
+      if ((millis() - LED1_lastTime) > timerDelay) {
+      if(WiFi.status()== WL_CONNECTED){
+        WiFiClient client;
+        HTTPClient http;
+        String serverPath = LED1_serverName;
+        http.begin(client, serverPath.c_str());
+        int httpResponseCode = http.GET();
+        if (httpResponseCode>0) {
+          Serial.print("HTTP Response code: ");
+          Serial.println(httpResponseCode);
+          _LED1 = http.getString();
+          Serial.println("_LED1=" + _LED1);
+        }
+        else {
+          Serial.print("Error code: ");
+          Serial.println(httpResponseCode);
+        }
+        http.end();
+      }
+      else {
+        Serial.println("WiFi Disconnected");
+      }
+      LED1_lastTime = millis();
+    }
+  }
+```
+
+
+
 ### LESSON_07 驗收作業--(A)伺服馬達 OR (B)溫濕度感測器DHT11
 
 ## 模組三
