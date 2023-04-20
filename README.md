@@ -21,6 +21,16 @@ ESP8266 D1 mini 是一塊廠商已經整合好的ESP8266開發板。
 ## 模組二
 課程時間：18小時
 ### LESSON_01 WEB Server控制2顆LED開關
+* GPIO5(D1) GPIO4(D2)各有一個LED燈
+*加入 GPIO3(RX) 第3個LED燈
+```
+  Serial.println("TCP/IP Configuration: ");
+  Serial.println(WiFi.macAddress());
+  Serial.println(WiFi.localIP());
+  Serial.println(WiFi.subnetMask());
+  Serial.println(WiFi.gatewayIP());
+  Serial.println(WiFi.dnsIP());
+```
 ### LESSON_02 課堂作業--WEB Server控制3顆LED開關
 ### LESSON_03 WEB Server控制1顆LED亮度-使用RANGE物件
 ### LESSON_04 課堂作業--WEB Server控制2顆LED亮度-使用RANGE物件
